@@ -8,6 +8,8 @@
   "devDependencies": {
     "@babel/core": "^7.27.1",
     "@babel/preset-env": "^7.27.2",
+    "@playwright/test": "^1.65.1",
+    "@types/node": "^26.6.11",
     "babel-loader": "^10.0.0",
     "concurrently": "^9.2.5",
     "nodemon": "^3.1.14"
