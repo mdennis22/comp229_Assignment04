@@ -16,7 +16,7 @@
   },
   "scripts": {
     "dev": "concurrently \"npm run dev --prefix portfolio\" \"nodemon server.js\"",
-    "build": "vite build",
+    "build": "npm --prefix portfolio run build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "start": "node server.js"

@@ -5,6 +5,9 @@ dotenv.config(); // Load environment variables from .env file
 import dotenv from "dotenv";
 
 import app from "./server/express.js";
+import express from "express";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 // import router from "./server/assets-router.js";
 //const assetsRouter = require("./server/assets-router");
 // import express from "express";
@@ -17,15 +20,22 @@ import qualificationsRoutes from "./server/routes/qualifications-routes.js";
 import seedAdmin from "./server/seeds/admin-seed.js";
 
 const PORT = process.env.PORT || 5000;
-
-app.get("/", (req, res) => {
-  res.send("Welcome, this is the backend of my portfolio. Mitchell Dennis");
-});
+const frontendDistPath = path.join(path.dirname(fileURLToPath(import.meta.url)), "portfolio", "dist");
 
 app.use("/api/contacts", contactRoutes);
 app.use("/api/projects", projectsRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/qualifications", qualificationsRoutes);
+app.use(express.static(frontendDistPath));
+app.use((req, res, next) => {
+  if (req.method !== "GET" || req.path === "/api" || req.path.startsWith("/api/")) {
+    return next();
+  }
+
+  res.sendFile(path.join(frontendDistPath, "index.html"), (error) => {
+    if (error) next(error);
+  });
+});
 
 const startServer = async () => {
   try {
