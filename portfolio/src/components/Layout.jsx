@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "../style/Global.css";
-import logo from "../assets/logo3.png";
+import logo from "../assets/logo3.webp";
 
 const Layout = ({ token, onSignOut }) => {
   return (
