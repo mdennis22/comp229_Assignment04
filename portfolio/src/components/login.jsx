@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = ({ onAuth }) => {
-  const [form, setForm] = useState({ email: "", password: "" });
+  const [form, setForm] = useState({ email: "", password: "", authenticatorCode: "" });
   const [error, setError] = useState("");
   const [saving, setSaving] = useState(false);
   const navigate = useNavigate();
@@ -48,6 +48,22 @@ const Login = ({ onAuth }) => {
             Password
           </label>
           <input type="password" id="password" name="password" value={form.password} onChange={handleChange} required />
+        </div>
+        <div className="form-group">
+          <label htmlFor="authenticatorCode" className="layout-title">
+            Authenticator code (if enabled)
+          </label>
+          <input
+            type="text"
+            id="authenticatorCode"
+            name="authenticatorCode"
+            value={form.authenticatorCode}
+            onChange={handleChange}
+            inputMode="numeric"
+            autoComplete="one-time-code"
+            pattern="[0-9]{6}"
+            maxLength="6"
+          />
         </div>
         {error && <div className="error">{error}</div>}
         <button disabled={saving} type="submit">

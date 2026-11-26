@@ -25,6 +25,18 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: "Password is required",
     },
+    twoFactorEnabled: {
+      type: Boolean,
+      default: false,
+    },
+    twoFactorSecret: {
+      type: String,
+      select: false,
+    },
+    twoFactorPendingSecret: {
+      type: String,
+      select: false,
+    },
   },
   {
     timestamps: {
