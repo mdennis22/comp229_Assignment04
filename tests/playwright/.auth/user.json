@@ -2,7 +2,7 @@
   "cookies": [],
   "origins": [
     {
-      "origin": "http://localhost:5173",
+      "origin": "https://comp229-assignment04.onrender.com",
       "localStorage": [
         {
           "name": "token",

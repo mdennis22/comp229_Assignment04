@@ -5,7 +5,7 @@ test.use({
 });
 
 test('test', async ({ page }) => {
-  await page.goto('http://localhost:5173/');
+  await page.goto('https://comp229-assignment04.onrender.com/');
   await page.getByRole('link', { name: 'Projects' }).click();
   await page.getByRole('textbox', { name: 'Name' }).click();
   await page.getByRole('textbox', { name: 'Name' }).fill('playwright test');
